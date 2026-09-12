@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+
+<body>
+
+    <form id="LoginForm">
+
+        <h2>Login Form</h2>
+
+        <input type="text" id="Username" placeholder="Enter Username">
+        <br><br>
+
+        <input type="password" id="Password" placeholder="Enter Password">
+        <br><br>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+
+        let params = new URLSearchParams(window.location.search);
+
+        // Get values from registration page
+        let registeredUsername = params.get("username");
+        let registeredPassword = params.get("password");
+
+        document.getElementById("LoginForm").addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            let Username = document.getElementById("Username").value;
+            let Password = document.getElementById("Password").value;
+
+            if (Username === registeredUsername &&
+                Password === registeredPassword) {
+
+                document.getElementById("message").innerHTML =
+                    Username + " Login Successfully";
+
+            } else {
+
+                document.getElementById("message").innerHTML =
+                    "Login Failed";
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
